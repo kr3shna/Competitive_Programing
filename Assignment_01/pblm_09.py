@@ -1,0 +1,1 @@
+# Given a string, remove duplicate adjacent from that string, example "aabcccdeed" should become "abcded" i.e, if there are some duplicate characters together then only keeo one of them.BaseException 
