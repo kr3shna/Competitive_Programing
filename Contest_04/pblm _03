@@ -1,0 +1,24 @@
+def count_less_than_or_equal_to(a, b):
+    a.sort()
+    result = []
+    n = len(a)
+    
+    for elem in b:
+        
+        left, right = 0, n - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if a[mid] <= elem:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        result.append(left)
+    
+    return result
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+print(*count_less_than_or_equal_to(a, b))
