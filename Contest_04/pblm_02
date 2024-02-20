@@ -1,0 +1,27 @@
+from collections import Counter
+
+def can_restore_names(guest_name, host_name, pile_letters):
+    guest_counter = Counter(guest_name)
+    host_counter = Counter(host_name)
+    
+    combined_counter = guest_counter + host_counter
+    
+    pile_counter = Counter(pile_letters)
+    
+    for letter, count in combined_counter.items():
+        if pile_counter[letter] != count:
+            return "NO"
+    
+    for letter, count in pile_counter.items():
+        if letter not in combined_counter:
+            return "NO"
+        if count > combined_counter[letter]:
+            return "NO"
+    
+    return "YES"
+
+guest_name = input().strip()
+host_name = input().strip()
+pile_letters = input().strip()
+
+print(can_restore_names(guest_name, host_name, pile_letters))
