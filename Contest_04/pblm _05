@@ -1,0 +1,17 @@
+n = int(input())
+coins = list(map(int, input().split()))
+
+coins.sort(reverse=True)
+
+total_sum = sum(coins)
+
+taken_sum = 0
+taken_coins = 0
+
+for coin in coins:
+    taken_sum += coin
+    taken_coins += 1
+    
+    if taken_sum > total_sum / 2:
+        print(taken_coins)
+        break
