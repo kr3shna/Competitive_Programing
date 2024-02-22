@@ -1,0 +1,13 @@
+def can_move_on(s, n, dragons):
+    dragons.sort(key=lambda x: x[0])  # Sort dragons by strength
+    for dragon in dragons:
+        if s > dragon[0]:
+            s += dragon[1]  # Increase strength by bonus
+        else:
+            return "NO"  # Kirito cannot defeat this dragon
+    return "YES"  # Kirito can defeat all dragons
+
+s, n = map(int, input().split())
+dragons = [list(map(int, input().split())) for _ in range(n)]
+
+print(can_move_on(s, n, dragons))
