@@ -1,0 +1,19 @@
+def count_teams(n, k, teams):
+    teams.sort(key=lambda x: (-x[0], x[1]))  # Sort teams by solved problems (descending) and then by penalty time (ascending)
+    
+    kth_team = teams[k - 1]
+    
+    count = 0
+    for team in teams:
+        if team == kth_team:
+            count += 1
+        else:
+            break
+    
+    return count
+
+n, k = map(int, input().split())
+teams = [tuple(map(int, input().split())) for _ in range(n)]
+
+result = count_teams(n, k, teams)
+print(result)
