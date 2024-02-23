@@ -1,0 +1,14 @@
+n = int(input())
+piles = list(map(int, input().split()))
+m = int(input())
+juicy_worms = list(map(int, input().split()))
+
+cumulative_sum = [0] * (n + 1)
+for i in range(1, n + 1):
+    cumulative_sum[i] = cumulative_sum[i - 1] + piles[i - 1]
+
+for worm_label in juicy_worms:
+    for i in range(1, n + 1):
+        if worm_label <= cumulative_sum[i]:
+            print(i)
+            break
