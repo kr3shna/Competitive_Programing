@@ -1,0 +1,18 @@
+def max_books(n, t, books):
+    max_books_read = 0
+    total_time = 0
+    start = 0
+
+    for end in range(n):
+        total_time += books[end]
+        while total_time > t:
+            total_time -= books[start]
+            start += 1
+        max_books_read = max(max_books_read, end - start + 1)
+
+    return max_books_read
+
+n, t = map(int, input().split())
+books = list(map(int, input().split()))
+
+print(max_books(n, t, books))
