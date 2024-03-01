@@ -1,0 +1,14 @@
+def count_alive_people(n, claws):
+    stack = []
+    for i in range(n):
+        kill_range_start = max(0, i - claws[i])
+        while stack and stack[-1] < kill_range_start:
+            stack.pop()
+        if not stack or stack[-1] > i:
+            stack.append(i)
+    return n - len(stack)
+
+n = int(input())
+claws = list(map(int, input().split()))
+
+print(count_alive_people(n, claws))
