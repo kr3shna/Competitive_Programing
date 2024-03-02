@@ -1,0 +1,28 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+freq = {}
+distinct_count = 0
+left = 0
+min_length = float('inf')
+result = (-1, -1)
+
+for right in range(n):
+    if a[right] not in freq or freq[a[right]] == 0:
+        distinct_count += 1
+    freq[a[right]] = freq.get(a[right], 0) + 1
+
+    while distinct_count >= k:
+        if right - left + 1 < min_length:
+            min_length = right - left + 1
+            result = (left + 1, right + 1)
+        
+        freq[a[left]] -= 1
+        if freq[a[left]] == 0:
+            distinct_count -= 1
+        left += 1
+
+if min_length == float('inf'):
+    print("-1 -1")
+else:
+    print(result[0], result[1])
