@@ -1,0 +1,20 @@
+def pinball_time(n, s):
+    result = []
+    for i in range(n):
+        direction = 1 if s[i] == '>' else -1
+        time = 1
+        pos = i
+        while 0 <= pos < n:
+            pos += direction
+            if 0 <= pos < n:
+                time += 1
+                direction *= -1
+        result.append(time)
+    return result
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+    # Calculate and print results for each query
+    print(*pinball_time(n, s))
