@@ -1,0 +1,25 @@
+def reorder_array(t, test_cases):
+    for test_case in test_cases:
+        n, arr = test_case
+        if len(set(arr)) == 1:
+            print("NO")
+        else:
+            print("YES")
+            non_repeating = [arr[0]]
+            repeating = []
+            for i in range(1, n):
+                if arr[i] == arr[i-1]:
+                    repeating.append(arr[i])
+                else:
+                    non_repeating.append(arr[i])
+            result = non_repeating + repeating
+            print(*result)
+
+t = int(input())
+test_cases = []
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    test_cases.append((n, arr))
+
+reorder_array(t, test_cases)

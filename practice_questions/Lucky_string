@@ -7,8 +7,6 @@ def minimal_lucky_string(n):
     if n % 2 == 1:
         result += 'a'
     
-    return result
-
-n = int(input())
+    return resultn = int(input())
 
 print(minimal_lucky_string(n))
